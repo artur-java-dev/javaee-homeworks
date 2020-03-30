@@ -1,6 +1,16 @@
 <%@ page pageEncoding="UTF-8" %>
 
-<ul style="list-style-type: none">
-    <li style="display: inline-block"><a href="main">Главная</a></li>
-    <li style="display: inline-block"><a href="catalog">Каталог</a></li>
+<style>
+    ul {
+        list-style-type: none;
+    }
+</style>
+
+<ul>
+    <li><a href="main">Главная</a></li>
+    <li><a href="catalog">Каталог</a></li>
+    <li><a href="product">Товар</a></li>
+    <li><a href="cart">Корзина</a></li>
+    <li><a href="order">Оформление заказа</a></li>
+    <li><a href="company">О компании</a></li>
 </ul>
