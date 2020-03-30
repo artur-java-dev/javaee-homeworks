@@ -1,0 +1,1 @@
+<img src="img/403error.gif" alt="" style="width: 100%">
