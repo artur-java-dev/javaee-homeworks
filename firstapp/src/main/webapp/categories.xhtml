@@ -1,0 +1,28 @@
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <title>Панель администрирования</title>
+</h:head>
+<h:body>
+
+    <h:form id="topform">
+        <h:commandButton styleClass="btn btn-primary" value="Добавить категорию" action="#{categContr.add()}"/>
+
+        <h:dataTable styleClass="table table-bordered" value="#{categContr.getAll()}" var="c">
+            <h:column>
+                <f:facet name="header">Название</f:facet>
+                #{c.title}
+            </h:column>
+            <h:column>
+                <h:commandButton styleClass="btn btn-danger" value="Удалить" action="#{categContr.remove(c)}">
+                    <f:ajax event="click" render="topform"/>
+                </h:commandButton>
+
+                <h:commandButton styleClass="btn btn-success" value="Изменить" action="#{categContr.edit(c)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+</h:body>
+</html>

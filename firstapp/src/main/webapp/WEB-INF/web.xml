@@ -8,22 +8,39 @@
     <display-name>Archetype Created Web Application</display-name>
 
     <servlet>
-        <servlet-name>MainPageServlet</servlet-name>
-        <servlet-class>ru.geekbrains.servlets.MainPageServlet</servlet-class>
+        <servlet-name>faces-servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>MainPageServlet</servlet-name>
-        <url-pattern>/main</url-pattern>
+        <servlet-name>faces-servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
-    <error-page>
-        <error-code>404</error-code>
-        <location>/error404.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>403</error-code>
-        <location>/error403.jsp</location>
-    </error-page>
+
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+
+
+    <context-param>
+        <param-name>dbURL</param-name>
+        <param-value>jdbc:postgresql://localhost:5432/postgres?currentSchema=test_db</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUsername</param-name>
+        <param-value>postgres</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbPassword</param-name>
+        <param-value>1234</param-value>
+    </context-param>
+
+
+    <context-param>
+        <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
 
 </web-app>

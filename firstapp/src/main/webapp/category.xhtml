@@ -1,0 +1,17 @@
+<html xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <title>Панель администрирования</title>
+</h:head>
+<h:body>
+
+    <h:form>
+        <div class="form-group">
+            <h:outputLabel>Название</h:outputLabel>
+            <h:inputText styleClass="form-control" value="#{categContr.category.title}"/>
+        </div>
+        <h:commandButton styleClass="btn btn-success" action="#{categContr.save()}" value="Сохранить"/>
+    </h:form>
+
+</h:body>
+</html>
