@@ -1,0 +1,36 @@
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <title>Панель администрирования</title>
+</h:head>
+<h:body>
+
+    <h:form id="topform">
+        <h:commandButton styleClass="btn btn-primary" value="Добавить товар" action="#{prodContr.add()}"/>
+
+        <h:dataTable styleClass="table table-bordered" value="#{prodContr.getAll()}" var="prod">
+            <h:column>
+                <f:facet name="header">Название</f:facet>
+                #{prod.title}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Описание</f:facet>
+                #{prod.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Цена</f:facet>
+                #{prod.price}
+            </h:column>
+            <h:column>
+                <h:commandButton styleClass="btn btn-danger" value="Удалить" action="#{prodContr.remove(prod)}">
+                    <f:ajax event="click" render="topform"/>
+                </h:commandButton>
+
+                <h:commandButton styleClass="btn btn-success" value="Изменить" action="#{prodContr.edit(prod)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+</h:body>
+</html>
