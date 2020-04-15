@@ -1,9 +1,8 @@
 package ru.geekbrains.controller;
 
 
-import lombok.SneakyThrows;
-import ru.geekbrains.domain.Category;
-import ru.geekbrains.repository.CategoryRepository;
+import ru.geekbrains.dto.CategoryDTO;
+import ru.geekbrains.service.CategoryService;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -19,17 +18,17 @@ public class CategoryController
 {
 
   @Inject
-  private CategoryRepository categRepo;
-  private Category category;
+  private CategoryService categoryService;
+  private CategoryDTO category;
 
 
-  public Category getCategory()
+  public CategoryDTO getCategory()
   {
 	return category;
   }
 
 
-  public void setCategory(Category c)
+  public void setCategory(CategoryDTO c)
   {
 	category = c;
   }
@@ -37,41 +36,33 @@ public class CategoryController
 
   public String add()
   {
-	category = new Category();
+	category = new CategoryDTO();
 	return "/category.xhtml?faces-redirect=true";
   }
 
 
-  @SneakyThrows
-  public List<Category> getAll()
+  public List<CategoryDTO> getAll()
   {
-	return categRepo.findAll();
+	return categoryService.getAll();
   }
 
 
-  public String edit(Category category)
+  public String edit(CategoryDTO category)
   {
 	setCategory(category);
 	return "/category.xhtml?faces-redirect=true";
   }
 
 
-  @SneakyThrows
-  public void remove(Category category)
+  public void remove(CategoryDTO category)
   {
-	Long id = category.getId();
-	categRepo.delete(id);
+	categoryService.remove(category);
   }
 
 
-  @SneakyThrows
   public String save()
   {
-	if (category.getId() == null)
-	  categRepo.insert(category);
-	else
-	  categRepo.update(category);
-
+	categoryService.save(category);
 	return "/categories.xhtml?faces-redirect=true";
   }
 
