@@ -31,8 +31,9 @@
         </div>
         <div class="form-group">
             <h:outputLabel>Категория</h:outputLabel>
-            <h:selectOneMenu>
-                <f:selectItem itemLabel="null" itemValue="null"/>
+            <h:selectOneMenu value="#{prodContr.product.categoryId}">
+                <f:selectItems value="#{categContr.getAll()}" var="c"
+                               itemLabel="#{c.title}" itemValue="#{c.id}"/>
             </h:selectOneMenu>
         </div>
         <div class="form-group">

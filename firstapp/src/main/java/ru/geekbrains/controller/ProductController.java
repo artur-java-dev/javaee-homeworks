@@ -1,9 +1,8 @@
 package ru.geekbrains.controller;
 
 
-import lombok.SneakyThrows;
-import ru.geekbrains.domain.Product;
-import ru.geekbrains.repository.ProductRepository;
+import ru.geekbrains.dto.ProductDTO;
+import ru.geekbrains.service.ProductService;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -19,17 +18,17 @@ public class ProductController
 {
 
   @Inject
-  private ProductRepository prodRepo;
-  private Product product;
+  private ProductService prodService;
+  private ProductDTO product;
 
 
-  public Product getProduct()
+  public ProductDTO getProduct()
   {
 	return product;
   }
 
 
-  public void setProduct(Product p)
+  public void setProduct(ProductDTO p)
   {
 	product = p;
   }
@@ -37,41 +36,33 @@ public class ProductController
 
   public String add()
   {
-	product = new Product();
+	product = new ProductDTO();
 	return "/product.xhtml?faces-redirect=true";
   }
 
 
-  @SneakyThrows
-  public List<Product> getAll()
+  public List<ProductDTO> getAll()
   {
-	return prodRepo.findAll();
+	return prodService.getAll();
   }
 
 
-  public String edit(Product product)
+  public String edit(ProductDTO product)
   {
 	setProduct(product);
 	return "/product.xhtml?faces-redirect=true";
   }
 
 
-  @SneakyThrows
-  public void remove(Product product)
+  public void remove(ProductDTO product)
   {
-	Long id = product.getId();
-	prodRepo.delete(id);
+	prodService.remove(product);
   }
 
 
-  @SneakyThrows
   public String save()
   {
-	if (product.getId() == null)
-	  prodRepo.insert(product);
-	else
-	  prodRepo.update(product);
-
+	prodService.save(product);
 	return "/products.xhtml?faces-redirect=true";
   }
 

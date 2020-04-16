@@ -3,48 +3,53 @@ package ru.geekbrains.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.geekbrains.dto.ProductDTO;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
-import javax.validation.constraints.*;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+import static javax.persistence.GenerationType.IDENTITY;
 
-@Named
-@RequestScoped
+
+@Entity
 @Data
 @NoArgsConstructor
+@Table(name = "products")
 public class Product
 {
 
+  @Id
+  @GeneratedValue(strategy = IDENTITY)
   private Long id;
 
-  @NotNull(message = "Обязательное поле")
-  @Size(max = 50, message = "Поле должно содержать до 50 символов")
+  @Column(name = "title", nullable = false, unique = true)
   private String title;
 
-  @NotNull(message = "Обязательное поле")
-  @Size(min = 25, max = 1000, message = "Поле должно содержать от 25 до 1000 символов")
+  @Column(name = "description", nullable = false)
   private String description;
 
-  @NotNull(message = "Обязательное поле")
-  @DecimalMin(value = "1")
-  @Digits(integer = 17, fraction = 2, message = "Целая часть должна содержать не более 17 цифр")
+  @Column(name = "price", nullable = false)
   private BigDecimal price;
 
+  @ManyToOne
+  @JoinColumn(name = "category_id")
+  private Category category;
 
-  public Product(Long id, String title, String description, double price)
+
+  public Product(ProductDTO dto)
   {
-	this(id, title, description, new BigDecimal(price));
+	title = dto.getTitle();
+	description = dto.getDescription();
+	price = dto.getPrice();
   }
 
 
-  public Product(Long id, String title, String description, BigDecimal price)
+  public Product setFrom(ProductDTO dto)
   {
-	setId(id);
-	setTitle(title);
-	setDescription(description);
-	setPrice(price);
+	title = dto.getTitle();
+	description = dto.getDescription();
+	price = dto.getPrice();
+	return this;
   }
 
 }
