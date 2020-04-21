@@ -10,6 +10,7 @@ import ru.geekbrains.repository.ProductJpaRepository;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -17,6 +18,7 @@ import static java.util.stream.Collectors.toList;
 
 @Stateless
 public class ProductService
+		implements Serializable
 {
 
   @Inject

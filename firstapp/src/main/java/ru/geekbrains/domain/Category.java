@@ -3,7 +3,7 @@ package ru.geekbrains.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.geekbrains.dto.CategoryDTO;
+import ru.geekbrains.service.interfaces.dto.CategoryDTO;
 
 import javax.persistence.*;
 import java.util.List;

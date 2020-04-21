@@ -1,9 +1,8 @@
-package ru.geekbrains.dto;
+package ru.geekbrains.service.interfaces.dto;
 
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.geekbrains.domain.Category;
 
 
 @Data
@@ -19,12 +18,6 @@ public class CategoryDTO
   {
 	setId(id);
 	setTitle(title);
-  }
-
-
-  public CategoryDTO(Category category)
-  {
-	this(category.getId(), category.getTitle());
   }
 
 }
