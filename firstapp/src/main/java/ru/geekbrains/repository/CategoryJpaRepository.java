@@ -3,8 +3,7 @@ package ru.geekbrains.repository;
 
 import ru.geekbrains.domain.Category;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -12,8 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
-@Named
-@ApplicationScoped
+@Stateless
 @Transactional
 public class CategoryJpaRepository
 		implements Serializable

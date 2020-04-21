@@ -3,8 +3,7 @@ package ru.geekbrains.repository;
 
 import ru.geekbrains.domain.Order;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,8 +14,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
-@Named
-@ApplicationScoped
+@Stateless
 @Transactional
 public class OrderJpaRepository
 		implements Serializable

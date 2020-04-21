@@ -5,16 +5,14 @@ import ru.geekbrains.domain.Category;
 import ru.geekbrains.dto.CategoryDTO;
 import ru.geekbrains.repository.CategoryJpaRepository;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
 
-@Named
-@ApplicationScoped
+@Stateless
 public class CategoryService
 {
 
