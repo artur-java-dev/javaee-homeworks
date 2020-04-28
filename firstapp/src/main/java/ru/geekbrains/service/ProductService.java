@@ -7,18 +7,18 @@ import ru.geekbrains.dto.ProductDTO;
 import ru.geekbrains.repository.CategoryJpaRepository;
 import ru.geekbrains.repository.ProductJpaRepository;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
 
-@Named
-@ApplicationScoped
+@Stateless
 public class ProductService
+		implements Serializable
 {
 
   @Inject

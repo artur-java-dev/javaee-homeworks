@@ -2,35 +2,37 @@ package ru.geekbrains.service;
 
 
 import ru.geekbrains.domain.Category;
-import ru.geekbrains.dto.CategoryDTO;
 import ru.geekbrains.repository.CategoryJpaRepository;
+import ru.geekbrains.service.interfaces.CategoryService;
+import ru.geekbrains.service.interfaces.dto.CategoryDTO;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
 
-@Named
-@ApplicationScoped
-public class CategoryService
+@Stateless
+public class CategoryServiceImpl
+		implements CategoryService
 {
 
   @Inject
   private CategoryJpaRepository catRepo;
 
 
+  @Override
   public List<CategoryDTO> getAll()
   {
 	return catRepo.findAll()
 				  .stream()
-				  .map(CategoryDTO::new)
+				  .map(x -> new CategoryDTO(x.getId(), x.getTitle()))
 				  .collect(toList());
   }
 
 
+  @Override
   public void remove(CategoryDTO dto)
   {
 	Long id = dto.getId();
@@ -38,6 +40,7 @@ public class CategoryService
   }
 
 
+  @Override
   public void save(CategoryDTO dto)
   {
 	if (dto.getId() == null)

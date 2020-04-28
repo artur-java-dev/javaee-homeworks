@@ -1,8 +1,8 @@
 package ru.geekbrains.controller;
 
 
-import ru.geekbrains.dto.CategoryDTO;
-import ru.geekbrains.service.CategoryService;
+import ru.geekbrains.service.interfaces.CategoryService;
+import ru.geekbrains.service.interfaces.dto.CategoryDTO;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;

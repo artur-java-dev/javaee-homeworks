@@ -3,8 +3,7 @@ package ru.geekbrains.repository;
 
 import ru.geekbrains.domain.Product;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -13,8 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
-@Named
-@ApplicationScoped
+@Stateless
 @Transactional
 public class ProductJpaRepository
 		implements Serializable
@@ -33,7 +31,7 @@ public class ProductJpaRepository
 
   public void update(Product product)
   {
-	em.refresh(product);
+	em.merge(product);
   }
 
 
