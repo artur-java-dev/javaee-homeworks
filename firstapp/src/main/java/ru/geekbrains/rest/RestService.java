@@ -81,7 +81,7 @@ public class RestService
   @Path("/product/title")
   @Produces(APPLICATION_JSON)
   @GET
-  public ProductDTO getProduct(@QueryParam("title") String title)
+  public ProductDTO getProductByTitle(@QueryParam("title") String title)
   {
 	Product prod = productRepo
 						   .findByTitle(title)
