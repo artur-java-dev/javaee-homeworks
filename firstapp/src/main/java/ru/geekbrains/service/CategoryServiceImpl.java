@@ -2,9 +2,8 @@ package ru.geekbrains.service;
 
 
 import ru.geekbrains.domain.Category;
+import ru.geekbrains.dto.CategoryDTO;
 import ru.geekbrains.repository.CategoryJpaRepository;
-import ru.geekbrains.service.interfaces.CategoryService;
-import ru.geekbrains.service.interfaces.dto.CategoryDTO;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
