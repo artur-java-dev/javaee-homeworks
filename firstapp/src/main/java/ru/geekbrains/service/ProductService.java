@@ -4,6 +4,7 @@ package ru.geekbrains.service;
 import ru.geekbrains.domain.Category;
 import ru.geekbrains.domain.Product;
 import ru.geekbrains.dto.ProductDTO;
+import ru.geekbrains.exception.ResourceNotFoundException;
 import ru.geekbrains.repository.CategoryJpaRepository;
 import ru.geekbrains.repository.ProductJpaRepository;
 
@@ -57,7 +58,8 @@ public class ProductService
 	  return;
 	}
 
-	Product product = productRepo.findByID(dto.getId());
+	Product product = productRepo.findByID(dto.getId())
+								 .orElseThrow(ResourceNotFoundException::new);
 	product.setFrom(dto).setCategory(cat);
 	productRepo.update(product);
   }

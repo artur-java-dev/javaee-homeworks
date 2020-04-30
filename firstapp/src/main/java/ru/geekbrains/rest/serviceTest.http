@@ -1,0 +1,23 @@
+PUT http://localhost:8080/firstapp/api/v1/product/add
+Content-Type: application/json
+
+{
+  "title": "computer ZX-Spectrum",
+  "description": "best computer ever",
+  "price": 10000,
+  "categoryId": 2
+}
+
+###
+
+GET http://localhost:8080/firstapp/api/v1/product/title?title=computer ZX-Spectrum
+
+###
+
+DELETE http://localhost:8080/firstapp/api/v1/product/remove/1
+
+###
+
+GET http://localhost:8080/firstapp/api/v1/products/2
+
+###

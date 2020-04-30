@@ -1,14 +1,12 @@
-package ru.geekbrains.service.interfaces;
+package ru.geekbrains.service;
 
 
-import ru.geekbrains.service.interfaces.dto.CategoryDTO;
+import ru.geekbrains.dto.CategoryDTO;
 
-import javax.ejb.Remote;
 import java.io.Serializable;
 import java.util.List;
 
 
-@Remote
 public interface CategoryService
 		extends Serializable
 {

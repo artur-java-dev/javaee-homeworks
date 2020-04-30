@@ -1,4 +1,4 @@
-package ru.geekbrains.service.interfaces.dto;
+package ru.geekbrains.dto;
 
 
 import lombok.Data;
